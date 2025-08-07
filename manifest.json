@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Page Info to Google Sheet",
+  "version": "1.0",
+  "description": "Sends the current page's title and URL to a specified Google Sheet.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "identity",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon4.svg",
+    "48": "images/icon16.svg",
+    "128": "images/icon48.svg"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "oauth2": {
+    "client_id": "1023364826088-fbo6up8c5tbt0hht07ktt69qor45jaq0.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets"
+    ]
+  },
+  "icons": {
+    "16": "images/icon4.svg",
+    "48": "images/icon16.svg",
+    "128": "images/icon48.svg"
+  }
+}
