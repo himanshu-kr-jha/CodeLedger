@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheet Updater</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>CodeLedger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for easy theme management */
         :root {
-            --primary-color: #3d5afe;
-            --primary-color-dark: #304ffe;
-            --text-color-dark: #0d112b;
-            --text-color-light: #4f586f;
-            --container-bg: rgba(255, 255, 255, 0.45);
-            --border-color: rgba(255, 255, 255, 0.6);
-            --border-radius: 16px;
-            --backdrop-blur: 12px;
+            --primary-color: #00ff99;
+            --primary-color-dark: #00cc7a;
+            --text-color-dark: #FFFFFF;
+            --text-color-light: #e0e0e0;
+            --container-bg: rgba(30, 30, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --input-bg-color: rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --backdrop-blur: 10px;
         }
 
-        /* General Body Styles */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'IBM Plex Mono', monospace;
             width: 380px;
-            /* A vibrant gradient background is key for the glass effect */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
             padding: 20px;
             color: var(--text-color-dark);
             display: flex;
@@ -34,17 +34,15 @@
             box-sizing: border-box;
         }
 
-        /* Main Container for all Views (The "Glass" Panel) */
         .view-container {
             width: 100%;
             background: var(--container-bg);
-            border-radius: 20px;
+            border-radius: var(--border-radius);
             padding: 24px;
             border: 1px solid var(--border-color);
-            /* The magic for the frosted glass effect */
             backdrop-filter: blur(var(--backdrop-blur));
             -webkit-backdrop-filter: blur(var(--backdrop-blur));
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
@@ -52,56 +50,57 @@
             display: none;
         }
 
-        /* Typography */
         h1 {
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--text-color-dark);
             margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        h1 span {
+            color: var(--primary-color);
         }
 
         p {
             font-size: 0.875rem;
             color: var(--text-color-light);
             line-height: 1.5;
+            text-align: center;
         }
 
         label {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             font-weight: 500;
             color: var(--text-color-light);
             margin-bottom: 0.5rem;
             display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Buttons */
         .btn {
             width: 100%;
             padding: 12px;
-            border: none;
+            border: 1px solid var(--primary-color);
             border-radius: var(--border-radius);
             font-size: 1rem;
             font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: transparent;
+            color: var(--primary-color);
         }
 
         .btn:hover {
-            background-color: var(--primary-color-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary-color);
+            color: #000000;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
         }
 
         .btn-icon {
@@ -116,48 +115,56 @@
         }
 
         .btn-icon:hover {
-            color: var(--text-color-dark);
-            background-color: rgba(255, 255, 255, 0.3);
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Inputs and Textarea */
         .input-field,
+        select,
         textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 8px;
             font-size: 0.9rem;
-            background-color: rgba(255, 255, 255, 0.5);
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--input-bg-color);
             color: var(--text-color-dark);
             transition: all 0.2s ease-in-out;
             box-sizing: border-box;
         }
 
         .input-field:focus,
+        select:focus,
         textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 0 3px rgba(61, 90, 254, 0.3);
+            box-shadow: 0 0 0 3px rgba(0, 255, 153, 0.2);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e0e0e0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 1em;
         }
 
         textarea {
             resize: vertical;
         }
 
-        /* Checkbox */
         .checkbox-container {
             display: flex;
             align-items: center;
             cursor: pointer;
             padding: 8px;
-            border-radius: 12px;
+            border-radius: 8px;
             transition: background-color 0.2s ease;
         }
 
         .checkbox-container:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .checkbox-container input {
@@ -167,9 +174,9 @@
         .checkbox-custom {
             width: 20px;
             height: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: var(--input-bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -179,7 +186,7 @@
 
         .checkbox-custom .tick {
             display: none;
-            color: white;
+            color: black;
         }
 
         .checkbox-container input:checked+.checkbox-custom {
@@ -191,10 +198,9 @@
             display: block;
         }
 
-        /* Spinner */
         .spinner {
             border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid white;
+            border-top: 4px solid var(--primary-color);
             border-radius: 50%;
             width: 32px;
             height: 32px;
@@ -212,19 +218,13 @@
             }
         }
 
-        /* Status Messages */
         .status-message {
             text-align: center;
             font-size: 0.8rem;
             font-weight: 500;
             padding-top: 0.75rem;
             height: 20px;
-            color: var(--text-color-dark);
-        }
-
-        /* Utility classes */
-        .text-center {
-            text-align: center;
+            color: var(--text-color-light);
         }
 
         .mb-6 {
@@ -335,7 +335,12 @@
         <div class="space-y-3">
             <div>
                 <label for="statusInput">Status</label>
-                <input type="text" id="statusInput" class="input-field">
+                <select id="statusInput" class="input-field">
+                    <option value="" selected disabled>Select Status</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Attempted">Attempted</option>
+                </select>
             </div>
             <div>
                 <label for="remarksInput">Remarks</label>
@@ -344,13 +349,12 @@
             <label class="checkbox-container">
                 <input type="checkbox" id="starredInput">
                 <span class="checkbox-custom">
-                    <svg class="tick" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg class="tick" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                 </span>
-                <span style="font-weight: 500; color: var(--text-color-dark);">Starred</span>
+                <span style="font-weight: 500; color: var(--text-color-light);">Starred</span>
             </label>
         </div>
 

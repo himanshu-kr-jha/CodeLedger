@@ -138,6 +138,9 @@ async function handleCreateNewSheet(sendResponse) {
 /**
  * Handles user logout
  */
+/**
+ * Handles user logout
+ */
 async function handleLogout(sendResponse) {
   try {
     // Clear cached auth token
@@ -146,8 +149,8 @@ async function handleLogout(sendResponse) {
       chrome.identity.removeCachedAuthToken({ token: token.authToken });
     }
 
-    // Clear all stored data
-    await chrome.storage.local.clear();
+    // Clear user-specific data but keep the spreadsheetId
+    await chrome.storage.local.remove(["userEmail", "authToken"]);
 
     sendResponse({ success: true });
   } catch (error) {
@@ -198,7 +201,6 @@ async function handleUpdate(request, sendResponse) {
     const pageData = injectionResults[0].result;
     if (!pageData) throw new Error("Could not scrape data from the page.");
 
-    // Find if the question already exists in the sheet
     const existingRowInfo = await findQuestionRow(
       token,
       spreadsheetId,
@@ -229,6 +231,76 @@ async function handleUpdate(request, sendResponse) {
     sendResponse({ success: false, error: error.message });
   }
 }
+
+/**
+ * Finds if a question already exists in the sheet and returns its info
+ */
+async function findQuestionRow(token, spreadsheetId, questionName) {
+  const range = "Sheet1!A:F";
+  const response = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+
+  if (!response.ok)
+    throw new Error("Failed to fetch sheet data for checking duplicates.");
+
+  const data = await response.json();
+  const rows = data.values || [];
+
+  for (let i = 1; i < rows.length; i++) {
+    // Start from 1 to skip header
+    const row = rows[i];
+    if (row[1] && row[1].trim() === questionName.trim()) {
+      return {
+        rowIndex: i + 1,
+        oldStatus: row[3] || "", // Get the old status
+        oldRemarks: row[4] || "",
+      };
+    }
+  }
+  return null;
+}
+
+/**
+ * Updates an existing row in the sheet, preserving status if no new one is provided
+ */
+async function updateExistingRow(token, spreadsheetId, existingRowInfo, data) {
+  const { rowIndex, oldStatus, oldRemarks } = existingRowInfo;
+
+  // If a new status is provided, use it. Otherwise, keep the old status.
+  const newStatus = data.status || oldStatus;
+
+  const newRemarks = data.remarks
+    ? `${oldRemarks}\n[${new Date().toLocaleString()}] ${data.remarks}`.trim()
+    : oldRemarks;
+
+  const range = `Sheet1!D${rowIndex}:F${rowIndex}`;
+  const valueInputOption = "USER_ENTERED";
+  const values = [[newStatus, newRemarks, data.starred ? "Yes" : "No"]];
+
+  const response = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?valueInputOption=${valueInputOption}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ values }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(
+      `Failed to update existing row: ${errorData.error.message}`
+    );
+  }
+}
+
 
 /**
  * Gets user info from Google API
