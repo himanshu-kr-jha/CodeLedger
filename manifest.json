@@ -13,8 +13,8 @@
     "default_popup": "popup.html",
     "default_icon": {
       "16": "images/icon4.svg",
-    "48": "images/icon16.svg",
-    "128": "images/icon48.svg"
+      "48": "images/icon16.svg",
+      "128": "images/icon48.svg"
     }
   },
   "background": {
@@ -23,12 +23,17 @@
   "oauth2": {
     "client_id": "1023364826088-fbo6up8c5tbt0hht07ktt69qor45jaq0.apps.googleusercontent.com",
     "scopes": [
-      "https://www.googleapis.com/auth/spreadsheets"
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/drive.file",
+      "https://www.googleapis.com/auth/userinfo.email"
     ]
   },
   "icons": {
     "16": "images/icon4.svg",
     "48": "images/icon16.svg",
     "128": "images/icon48.svg"
-  }
+  },
+  "host_permissions": [
+    "https://www.googleapis.com/*"
+  ]
 }
