@@ -1,4 +1,3 @@
-// This script runs in the context of the active web page.
 
 function scrapePageInfo() {
   let questionName = "";

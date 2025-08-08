@@ -358,10 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
   checkAuthenticationState();
 });
 
-// Add this to your popup.js temporarily for debugging
-// You can remove it once the issue is resolved
 
-// Add debug logging to the authentication process
 async function debugAuthentication() {
   console.log("=== DEBUG: Starting authentication check ===");
   
@@ -389,17 +386,6 @@ async function debugAuthentication() {
   }
 }
 
-// Add a debug button to your popup (add this to the login view in popup.html)
-/*
-<button id="debugBtn" style="margin-top: 10px; padding: 8px; background: orange; color: white; border: none; border-radius: 4px;">
-  Debug Info
-</button>
-*/
-
-// Then add this event listener in popup.js
-// document.getElementById("debugBtn")?.addEventListener("click", debugAuthentication);
-
-// Also add this to check the manifest and permissions
 function checkManifestPermissions() {
   console.log("=== DEBUG: Checking permissions ===");
   
