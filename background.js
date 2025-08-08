@@ -1,5 +1,5 @@
 // Constants
-const SHEET_NAME = "Page Info Tracker";
+const SHEET_NAME = "Coding Problems-Sheet";
 
 // Message handlers
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -429,7 +429,7 @@ async function createSpreadsheet(token, title) {
 async function setupSheetHeaders(token, spreadsheetId) {
   const range = "Sheet1!A1:F1";
   const headers = [
-    "Sno",
+    "S.No",
     "Question Name",
     "Link",
     "Status",
@@ -591,7 +591,7 @@ async function appendNewRow(token, spreadsheetId, data) {
 
   const values = [
     [
-      "", // Sno (Leave blank for manual numbering or formula)
+      "=ROW()-1", // Sno (Leave blank for manual numbering or formula)
       data.questionName,
       data.url,
       data.status,

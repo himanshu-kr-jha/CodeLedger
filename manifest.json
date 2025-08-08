@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Page Info to Google Sheet",
+  "name": "Code Ledger",
   "version": "1.0",
-  "description": "Sends the current page's title and URL to a specified Google Sheet.",
+  "description": "Its Chrome extension that lets you log coding problems you solve — directly into a Google Sheet. Helps you track and manage the coding problems you solve across various platforms",
   "permissions": [
     "activeTab",
     "scripting",
@@ -12,9 +12,9 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/icon4.svg",
-      "48": "images/icon16.svg",
-      "128": "images/icon48.svg"
+      "16": "./images/icon.svg",
+    "48": "./images/icon.svg",
+    "128": "./images/icon.svg"
     }
   },
   "background": {
@@ -29,9 +29,9 @@
     ]
   },
   "icons": {
-    "16": "images/icon4.svg",
-    "48": "images/icon16.svg",
-    "128": "images/icon48.svg"
+    "16": "./images/icon.svg",
+    "48": "./images/icon.svg",
+    "128": "./images/icon.svg"
   },
   "host_permissions": [
     "https://www.googleapis.com/*"
