@@ -3,6 +3,7 @@
   "name": "Code Ledger",
   "version": "1.0",
   "description": "Its Chrome extension that lets you log coding problems you solve — directly into a Google Sheet. Helps you track and manage the coding problems you solve across various platforms",
+  "key":"-----BEGIN PRIVATE KEY-----MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC1xPEod+w9wvlxyQivQP+Tfq5DoU4zfADNm0kEbSeINZVpJ8iFAxED7pwDncfEeDF2V4sh8p05DUgGbf/1CfqJD0304bjreqUO/viQnhhQyMBcN5U2BXcoeYJoyif3TzKcqfwBjPmHbQvqkDi8wAPDHJjOhY4JsTpK0ZxHhObVJKPiuTI0ljIjhVCzOfHcZzP421VJDly9aA4Z6aJDLUvIavqYpoQXL0EjX0uWgWZEU0g5DquzpX/IsTBkm/4OML4wRzwUMpSfILjxFc/5k2h03a+K3ZSv8+KmYzz8DNT5Zovk9g+G82xW5c/ncPAOznV/X8b1/6qahH90f7EhWF1/AgMBAAECggEARtHKm9fNhWq3wWtwJMgQS6kpwFPSoiCIN5Nu6XiV1G38HpJPf/Nn575JrucEdDnYG6GUJc/fDeFs1IR7Gz+eC1SZLPXdFHIeaS9SLRZLpv3wZH2Ldxa+DFj7RFSvKZ4DvCJGe1wvxGHqKKO0V2YAkT5NEvnaE1Cnw4rTdtIDFbudGC/0yWwnfIZ4YcXnGG/n8cnAElUpSIYoyrmwLOqOV3L4WeYDk+0C2hs3+6iZGrHwzSCyX8bF5kWoSA3HCsH8DQK7fYNk4ddCvyk6GbNepm4V7Y7f9qwOQJ/pQg65Zv7Rtdx4wXI3RHFkGA4Y0HX470yMNMZr5x/G0FCgssi0YQKBgQD4JUEXrb3/BYbzm1x/fZQTE5dvPMBnUU8bf2SKcTkM7JNFPCUhCM8p/rU5i04kCNfRcZTmBa8+6TA6eMSi8drsTRbe9YxteSCJvilY+u+zopJ1yg4kN99RQfWgpTczhgb6y/w4Gd5002iQKDKaG+Jic7TWEVwWQrGaTONVi3MjOQKBgQC7hdXQw0VaHGPQ7e8fp1yZXoVZSMnC/tJAk2WQEGhkdKS4D0M7X9wKzNt0+FNk2UIzjiICythMpym1zH/1qe4Vl5DtfU3howqqX0xhJiqruFHMiP+Wl4Vt/oYYUbOReOfFWHAPZCYvIWPHKWUv7ODzpuSiekxtkVCzOZ9vgLTudwKBgFQ5MNK8odRBKADfJpIPKYcgCzIySIvIyTToFFP5Aggk9Ad31pJTzxzN2uzhH3CTn8zy5Dr+ivCrbTcrbnJv7IJv1+dtKHCvwB+Ab8BHy7wI3fUk04/vdti5rokMCqRuRUgynDTecubsKn1jZ2lvNXN9Gk/eLIdRs75Pgomyfy3hAoGAVX8XlS7yl7sJ52AT/iKYHXTy51pAYx87TSXm0GAquGJWF3Ud+hwifuoXxKTToM9NV6Qd7Zf+NjSg17p9PMxVOJL6CM1wjMeBPVxlvoVgPxqycMalgUtkElpRWRUnAdRWF6vSq7HFlwdqLou5Dri5d11IMKwB3JK8cHp9LqFH3NECgYAM5VBKBs4l+SkVo8d4wszBsKoO+CwK95tVlEd4a5BOi8kd/r+nuzOvbH4h34Gkau8weBzpN80nkUV7P65ZTe78K9JjvQbe4KQAjVOVQyxTLdXYyZximOmjK0At770JV6fSFotfS5JueDoGxj1oWAFWBUNLHPpx1/WKV8OYaJchZw==-----END PRIVATE KEY-----",
   "permissions": [
     "activeTab",
     "scripting",
@@ -21,7 +22,7 @@
     "service_worker": "background.js"
   },
   "oauth2": {
-    "client_id": "1023364826088-fbo6up8c5tbt0hht07ktt69qor45jaq0.apps.googleusercontent.com",
+    "client_id": "1023364826088-mijh2ojluonbsntqk5alb1hgj4rf0q79.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/spreadsheets",
       "https://www.googleapis.com/auth/drive.file",

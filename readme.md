@@ -3,6 +3,7 @@
 **CodeLedger** is a Chrome extension that lets you log coding problems you solve — directly into a **Google Sheet**.
 Capture the problem’s title, URL, status, and remarks with a single click, and build a personal log of your progress.
 
+>**Disclaimer:** This extension is tested and compatible with **Google Chrome** only.
 ---
 
 ## 🚀 Features
